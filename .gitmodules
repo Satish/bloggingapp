@@ -13,3 +13,9 @@
 [submodule "vendor/plugins/shoulda"]
 	path = vendor/plugins/shoulda
 	url = git://github.com/thoughtbot/shoulda.git
+[submodule "vendor/plugins/annotate_models"]
+	path = vendor/plugins/annotate_models
+	url = git://github.com/Satish/annotate_models.git
+[submodule "vendor/plugins/exception_notification"]
+	path = vendor/plugins/exception_notification
+	url = git://github.com/rails/exception_notification.git

@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :author, :author_url, :author_email
       t.text :description
       t.boolean :spam, :default => false
-      t.boolean :status, :default => false
+      t.boolean :active, :default => false
       t.references :commentable, :polymorphic => true
 
       t.timestamps

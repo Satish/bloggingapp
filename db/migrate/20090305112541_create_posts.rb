@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title, :permalink
       t.text :description
-      t.boolean :status, :active, :default => true
+      t.boolean :active, :default => true
       t.datetime :published_at
 
       t.timestamps

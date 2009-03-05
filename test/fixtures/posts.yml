@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id           :integer(4)      not null, primary key
+#  title        :string(255)
+#  permalink    :string(255)
+#  description  :text
+#  status       :boolean(1)      default(TRUE)
+#  active       :boolean(1)      default(TRUE)
+#  published_at :datetime
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
