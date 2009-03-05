@@ -1,6 +1,15 @@
-[submodule "permalink_fu"]
-	path = permalink_fu
-	url = git://github.com/technoweenie/permalink_fu.git
-[submodule "liquid"]
-	path = liquid
+[submodule "vendor/plugins/acts_as_taggable_on_steroids"]
+	path = vendor/plugins/acts_as_taggable_on_steroids
+	url = git://github.com/mattetti/acts_as_taggable_on_steroids.git
+[submodule "vendor/plugins/will_paginate"]
+	path = vendor/plugins/will_paginate
+	url = git://github.com/mislav/will_paginate.git
+[submodule "vendor/plugins/liquid"]
+	path = vendor/plugins/liquid
 	url = git://github.com/tobi/liquid.git
+[submodule "vendor/plugins/permalink_fu"]
+	path = vendor/plugins/permalink_fu
+	url = git://github.com/technoweenie/permalink_fu.git
+[submodule "vendor/plugins/shoulda"]
+	path = vendor/plugins/shoulda
+	url = git://github.com/thoughtbot/shoulda.git

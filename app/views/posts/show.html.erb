@@ -1,0 +1,33 @@
+<p>
+  <b>Title:</b>
+  <%=h @post.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @post.description %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%=h @post.permalink %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @post.status %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @post.active %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%=h @post.published_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
