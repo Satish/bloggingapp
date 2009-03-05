@@ -1,0 +1,6 @@
+[submodule "permalink_fu"]
+	path = permalink_fu
+	url = git://github.com/technoweenie/permalink_fu.git
+[submodule "liquid"]
+	path = liquid
+	url = git://github.com/tobi/liquid.git
