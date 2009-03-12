@@ -28,6 +28,9 @@ ActionController::Routing::Routes.draw do |map|
    map.root :controller => "posts"
    map.resources :posts
    map.resources :pages
+   map.feed '/feed', :controller => "posts", :action => "feed"
+   map.connect ':year/:month/:day/:permalink', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
+  
   
   map.namespace :admin do |admin|
     admin.root :controller => 'dashboard'

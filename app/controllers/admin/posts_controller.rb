@@ -8,11 +8,6 @@ class Admin::PostsController < Admin::AdminController
       format.html{}
       format.xml{ render :xml => @posts }
     end
-    flash[:notice] = 'I just want you to know :notice'
-    flash[:error] = 'I just want you to know :error'
-    flash[:message] = 'I just want you to know :message'
-    flash[:info] = 'I just want you to know :info'
-    flash[:warning] = 'I just want you to know :warning'
   end
   
   def new

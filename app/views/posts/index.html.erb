@@ -12,15 +12,13 @@
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%=h post.title %></td>
+    <td><%=link_to h(post.title), post %></td>
     <td><%=h post.description %></td>
-    <td><%=h post.permalink %></td>
-    <td><%=h post.status %></td>
-    <td><%=h post.active %></td>
+    <td><%#=h post.permalink %></td>
+    <td><%#=h post.status %></td>
+    <td><%#=h post.active %></td>
     <td><%=h post.published_at %></td>
     <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -39,4 +39,20 @@ class Post < ActiveRecord::Base
     
   end
   
+  def url
+    created_at.strftime("/%Y/%m/%d/") + permalink
+  end
+  
+  class << self
+    def find_by_date_and_permalink(year, month, day, permalink, options={})
+      begin
+        post = Post.find_by_permalink(permalink, options)
+        post && post.created_at.to_date == Date.new(year.to_i, month.to_i, day.to_i) ? post : nil
+      rescue # Invalid time
+        nil
+      end
+    end
+    
+  end
+  
 end
