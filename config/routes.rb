@@ -29,11 +29,13 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :posts
    map.resources :pages
   
-   map.namespace :admin do |admin|
-      admin.root :controller => 'dashboard'		
-      admin.resources :posts
-      admin.resources :comments
-      admin.resources :pages
+  map.namespace :admin do |admin|
+    admin.root :controller => 'dashboard'
+    admin.resources :dashboard, :only => [:index]
+    admin.resources :posts
+    admin.resources :comments
+    admin.resources :pages
+    admin.resources :users
    end
 
   

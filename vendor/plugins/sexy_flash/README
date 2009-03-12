@@ -1,0 +1,37 @@
+SexyFlash
+=========
+
+This plugin provides an easy to use helper to display flash messages. It provides styling for flash messages, and scriptaculous effects for extra sexyness.
+
+
+Example
+=======
+Add the stylesheet in your layout:
+<%= stylesheet_link_tag "sexy_flash" %>
+
+
+Use flash notice, warning and error as you normally would. Then simply call the helper from your views:
+
+<%= sexy_flash %>
+
+Options
+=======
+
+The sexy_flash helper accepts an options hash which overrides the defaults. For example:
+
+<%= sexy_flash :timeout => 2, :duration => 1, :show_effect => "BlindDown", :hide_effect => "BlindUp" %>
+
+In addition, sometimes you would want to specify flash message options upon creation. You may specify options on your controller, which will override any options you've specified on the sexy_flash helper call in your view. For example:
+
+flash[:error] = 'Dude, you screwed up!', {:timeout => 0} # don't time out.
+
+Contributors
+============
+
+  * Akhil Bansal (http://webonrails.com): created global options functionality on the sexy_flash view helper.
+  * Richard Luther (http://github.com/tangofoxtrot): Bug fix on install script
+
+Licence
+=======
+
+Copyright (c) 2008-2009 Harold A. Gimenez, released under the MIT license.

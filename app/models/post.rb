@@ -30,4 +30,13 @@ class Post < ActiveRecord::Base
   has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :tags
   
+  def self.search(search, page)
+    paginate :per_page => 5, :page => page,
+             :conditions => ['title like ? or description like ?', "%#{search}%", "%#{search}%"], :order => 'title'
+  end
+  
+  def tag_list
+    
+  end
+  
 end

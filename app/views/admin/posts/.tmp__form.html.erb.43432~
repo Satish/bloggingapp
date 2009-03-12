@@ -1,0 +1,20 @@
+<% use_tinymce -%>
+<% form_for([:sga, @store, @page]) do |f| -%>
+  <%= f.error_messages -%>
+	<div class="formFields">
+		<%= f.label :title -%>
+		<%= f.text_field :title, :class => "fieldWidth" -%>
+	</div>
+	<div class="formFields">
+		<%= f.label :permalink -%>
+		<%= f.text_field :permalink, :class => "fieldWidth" -%>
+	</div>
+	<div class="formFields">
+		<%= f.label :description -%>
+		<%= f.text_area :description, :cols => 100, :class => "mceEditor" -%>
+	</div>
+	<div class="adjustedMargin">
+	  <%= submit_tag @page.new_record?  ? "Create":"Update" -%> or 
+    <%= link_to "Cancel", [:sga, @store, Page.new] -%>
+	</div>
+<% end -%>	

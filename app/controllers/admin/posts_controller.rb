@@ -1,2 +1,84 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < Admin::AdminController
+  
+  before_filter :find_post, :only => [:show, :edit, :update, :destroy]
+  
+  def index
+    @posts = Post.search(params[:search], params[:page])
+    respond_to do |format|
+      format.html{}
+      format.xml{ render :xml => @posts }
+    end
+    flash[:notice] = 'I just want you to know :notice'
+    flash[:error] = 'I just want you to know :error'
+    flash[:message] = 'I just want you to know :message'
+    flash[:info] = 'I just want you to know :info'
+    flash[:warning] = 'I just want you to know :warning'
+  end
+  
+  def new
+    @post = Post.new
+  end
+  
+  def create
+    @post = Post.new(params[:post])
+    if @post.save
+      respond_to do |format|
+        format.html do
+          flash[:message] = 'Post Created successfully.'
+          redirect_to [:admin, @post] and return
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :action => 'new'}
+      end
+    end
+  end
+  
+  def edit; end
+  
+  def update
+    if @post.update_attributes(params[:post])
+      respond_to do |format|
+        format.html do
+          flash[:message] = 'Post updated successfully.'
+          redirect_to [:admin, @post] and return
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :action => 'edit'}
+      end
+    end
+  end
+  
+  def destroy
+    respond_to do |format|
+      format.js do
+        render :update do |page|
+          if @post.destroy
+            page.remove("post_#{@post.id}")
+          else
+            page.alert(BAD_REQUEST_ERROR_MESSAGE)
+          end
+        end
+      end
+      format.html do
+        flash[:message] = 'Post deleted successfully.' if @post.destroy
+        redirect_to_posts_home and return
+      end
+    end
+  end
+  
+  private #######################
+  
+  def find_post
+    @post = Post.find_by_id(params[:id])
+    redirect_to_posts_home and return unless @post
+  end
+  
+  def redirect_to_posts_home
+    redirect_to [:admin, Post.new] and return
+  end
+   
 end

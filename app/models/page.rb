@@ -24,4 +24,10 @@ class Page < ActiveRecord::Base
   validates_presence_of :title, :permalink, :description
   validates_uniqueness_of :title, :permalink
   
+  
+  def self.search(search, page)
+    paginate :per_page => 5, :page => page,
+             :conditions => ['title like ? or description like ?', "%#{search}%", "%#{search}%"], :order => 'title'
+  end
+
 end

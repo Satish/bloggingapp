@@ -1,0 +1,14 @@
+<div class="clear heading">
+  <div class="floatRight">
+    <%= link_to "Store Home", [:sga, @store] -%>|
+		<%= link_to "Pages", [:sga, @store, Page.new] -%>
+  </div>
+  <h2 class="floatLeft">New Page</h2>
+</div>	
+<div id='content'>
+  <div class="info clear noBorder">
+    <%= render :partial => 'form' -%>
+  </div>
+</div>
+
+

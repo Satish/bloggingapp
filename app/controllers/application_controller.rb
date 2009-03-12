@@ -2,6 +2,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  
+  PAGE_NOT_FOUND_ERROR_MESSAGE = "Sorry, The page you were looking cannot be found..."
+  BAD_REQUEST_ERROR_MESSAGE = "Sorry, We are unable to process your request..."
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
