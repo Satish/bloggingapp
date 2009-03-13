@@ -1,0 +1,26 @@
+<div class="container post">
+  <div id='loginForm' class="formContainer create">
+    <% form_tag admin_login_path do -%>
+  <div class="formRow transparent">
+    <%= label_tag 'login' %><br />
+    <%= text_field_tag 'login', @login, :class => "text important styledFormElement" %>
+  </div>
+  <div class="formRow transparent">
+    <%= label_tag 'password' %><br/>
+    <%= password_field_tag 'password', nil, :class => "text important styledFormElement"%>
+  </div>
+  <!--
+  Uncomment this if you want this functionality
+  <div class="formRow transparent">
+    <%= label_tag 'remember_me', 'Remember me' %>
+    <%= check_box_tag 'remember_me', '1', @remember_me %>
+  </div>
+  -->
+  <div class="formRow transparent">
+    <%= label_tag '' %><br/>
+    <%= submit_tag 'Log in' %>
+  </div>
+  <% end -%>
+  </div>
+</div>
+

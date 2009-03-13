@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  
+    
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -38,9 +38,19 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts
     admin.resources :comments
     admin.resources :pages
-    admin.resources :users
-   end
-
+    admin.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
+    
+    admin.with_options :controller => 'users' do |user|
+      user.signup '/signup', :action => 'new'
+      user.register '/register', :action => 'create'
+      user.activate '/activate/:activation_code', :action => 'activate', :activation_code => nil
+    end
+    
+    admin.with_options :controller => 'sessions' do |session|
+      session.login  '/login', :action => 'new'
+      session.logout '/logout', :action => 'destroy'
+    end
+  end
   
   # See how all your routes lay out with "rake routes"
 
@@ -49,4 +59,5 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
 end

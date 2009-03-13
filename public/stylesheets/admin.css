@@ -232,6 +232,44 @@ a img {
 	margin-top: 50px;
 }
 
+body.login #page .container {
+  background:transparent none repeat scroll 0% 0%;
+  border:medium none;
+  margin:auto;
+  padding:0pt;
+  width:300px;
+}
+
+body.login h1 {
+  -x-system-font:none;
+  font-family:'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue',Helvetica,Arial,Sans-Serif;
+  font-size:3.5em;
+  line-height:100px;
+  margin:0pt;
+  padding:10px 0pt;
+  text-align:center;
+}
+
+body.login input[type="text"], body.login input[type="password"], body.login label.overcontent {
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-bottomright:5px;
+  -moz-border-radius-topleft:5px;
+  -moz-border-radius-topright:5px;
+  -x-system-font:none;
+  color:#333333;
+  font-family:'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue',Helvetica,Arial,Sans-Serif;
+  font-size:1.5em;
+  font-size-adjust:none;
+  font-stretch:normal;
+  font-style:normal;
+  font-variant:normal;
+  font-weight:normal;
+  line-height:normal;
+  margin:0pt auto 15px;
+  padding:3px 5px;
+  width:280px;
+}
+
 #page .container {
 /*	width: 70%;
 	min-width: 750px;
