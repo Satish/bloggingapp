@@ -46,7 +46,12 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-
+  
+  def self.search(search, page)
+    paginate :per_page => 5, :page => page,
+             :conditions => ['name like ? or email like ?', "%#{search}%", "%#{search}%"], :order => 'name'
+  end
+  
   protected
     
     def make_activation_code

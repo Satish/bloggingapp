@@ -6,7 +6,10 @@ class Admin::UsersController < Admin::AdminController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
   
-
+  def index
+    @users = User.search(params[:search], params[:page])
+  end
+  
   # render new.rhtml
   def new
     @user = User.new
@@ -18,7 +21,7 @@ class Admin::UsersController < Admin::AdminController
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
-      redirect_back_or_default('/')
+      redirect_back_or_default(admin_users_path)
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
@@ -33,34 +36,34 @@ class Admin::UsersController < Admin::AdminController
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
       flash[:notice] = "Signup complete! Please sign in to continue."
-      redirect_to '/login'
+      redirect_to admin_login_path
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
-      redirect_back_or_default('/')
+      redirect_to :back
     else 
       flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
-      redirect_back_or_default('/')
+      redirect_to :back
     end
   end
 
   def suspend
     @user.suspend! 
-    redirect_to users_path
+    redirect_to [:admin, User.new]
   end
-
+  
   def unsuspend
     @user.unsuspend! 
-    redirect_to users_path
+    redirect_to [:admin, User.new]
   end
 
   def destroy
     @user.delete!
-    redirect_to users_path
+    redirect_to [:admin, User.new]
   end
 
   def purge
     @user.destroy
-    redirect_to users_path
+    redirect_to [:admin, User.new]
   end
   
   # There's no page here to update or destroy a user.  If you add those, be

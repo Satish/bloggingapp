@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
       user.activate '/activate/:activation_code', :action => 'activate', :activation_code => nil
     end
     
+    admin.resources :sessions
     admin.with_options :controller => 'sessions' do |session|
       session.login  '/login', :action => 'new'
       session.logout '/logout', :action => 'destroy'

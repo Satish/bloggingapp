@@ -233,18 +233,15 @@ a img {
 }
 
 body.login #page .container {
-  background:transparent none repeat scroll 0% 0%;
-  border:medium none;
-  margin:auto;
-  padding:0pt;
-  width:300px;
+   width:375px;
+   border:5px solid #E7E7E7;
 }
 
 body.login h1 {
   -x-system-font:none;
   font-family:'Helvetica Neue Light','HelveticaNeue-Light','Helvetica Neue',Helvetica,Arial,Sans-Serif;
   font-size:3.5em;
-  line-height:100px;
+  line-height:50px;
   margin:0pt;
   padding:10px 0pt;
   text-align:center;
@@ -263,18 +260,22 @@ body.login input[type="text"], body.login input[type="password"], body.login lab
   font-stretch:normal;
   font-style:normal;
   font-variant:normal;
-  font-weight:normal;
+  font-weight:normal;Login using an OpenID instead
   line-height:normal;
-  margin:0pt auto 15px;
+  margin:0pt;
   padding:3px 5px;
-  width:280px;
+  width:365px;
+}
+
+body.login .create input.text, body.login .create label {
+  font-size:1.5em;
 }
 
 #page .container {
 /*	width: 70%;
 	min-width: 750px;
 	max-width: 900px;*/
-	width: 850px;
+	width: 815px;
 	margin: 10px auto;
 	padding: 15px 30px;
 	background: #fafafa;
@@ -422,7 +423,7 @@ body.page-logs .item.expanded .more {
 }
 
 .create {
-  color:#AEAEAE;
+  color:#555;
 }
 
 .create input.text, .create textarea, .create label, .search .text {
@@ -474,6 +475,7 @@ label.overcontent {
 .table .tableRow { overflow:hidden; padding: 5px 0px; }
 .table .tableRow:hover { background-color:#F0F0F0 }
 .table .tableRow .textAlignCenter, .table .tableHeader .textAlignCenter { text-align:center; }
+.table .tableRow .textAlignRight, .table .tableHeader .textAlignRight { text-align:right; }
 .table .tableRow.odd{ border-bottom:1px solid #E7E7E7; }
 .table .tableRow.even{ border-bottom:1px solid #E7E7E7; }
 .table .tableRow .textAlignLeft, .table .tableHeader .textAlignLeft { text-align:left; }
