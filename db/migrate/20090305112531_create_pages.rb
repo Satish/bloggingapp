@@ -3,6 +3,7 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
       t.string :title, :permalink
       t.text :description
+      t.references :user
       t.boolean :active, :default => true
       
       t.timestamps

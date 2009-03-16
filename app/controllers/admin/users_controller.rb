@@ -1,13 +1,13 @@
 class Admin::UsersController < Admin::BaseController
   
-  require_role 'admin', :except => [:index]
+  require_role 'admin', :except => [:index, :edit, :update]
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
+  before_filter :find_user, :only => [:edit, :update, :suspend, :unsuspend, :destroy, :purge]
   
   def index
     @users = User.search(params[:search], params[:page])
@@ -31,7 +31,18 @@ class Admin::UsersController < Admin::BaseController
       render :action => 'new'
     end
   end
-
+  
+  def edit; end
+    
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:message] = "#{@user.login}'s account updated successfully' "
+      redirect_to [:edit, :admin, @user]
+    else
+      render :action => "edit"
+    end
+  end
+  
   def activate
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
@@ -76,7 +87,7 @@ class Admin::UsersController < Admin::BaseController
   protected ##################################
   
   def find_user
-    @user = User.find_by_id(params[:id])
+    @user = current_user.has_role?('admin') ? User.find_by_id(params[:id]) : current_user
     redirect_to_admin_root_path and return unless @user
   end
   

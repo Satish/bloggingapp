@@ -18,7 +18,6 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   
   has_permalink :title, :permalink
-  
   attr_protected :status, :active
   
   named_scope :active, :conditions => { :active => true }
@@ -29,6 +28,8 @@ class Post < ActiveRecord::Base
   
   has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :tags
+  
+  belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
   
   def self.search(search, page)
     paginate :per_page => 5, :page => page,

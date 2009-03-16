@@ -1,6 +1,7 @@
 class Admin::PostsController < Admin::BaseController
   
   before_filter :find_post, :only => [:show, :edit, :update, :destroy]
+  before_filter :owner_required, :only => [:edit, :update, :destroy]
   
   def index
     @posts = Post.search(params[:search], params[:page])
@@ -16,7 +17,7 @@ class Admin::PostsController < Admin::BaseController
   
   def create
     @post = Post.new(params[:post])
-    if @post.save
+    if current_user.posts << @post
       respond_to do |format|
         format.html do
           flash[:message] = 'Post Created successfully.'
@@ -75,5 +76,9 @@ class Admin::PostsController < Admin::BaseController
   def redirect_to_posts_home
     redirect_to [:admin, Post.new] and return
   end
-   
+  
+  def owner_required
+    redirect_to_posts_home and return unless current_user.has_ownership?(@post)
+  end
+    
 end

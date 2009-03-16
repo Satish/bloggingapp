@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   
   has_many :roles_users, :dependent => :destroy, :conditions => {:active => true}
   has_many :roles, :through => :roles_users
-  
+  has_many :posts, :dependent => :destroy
+  has_many :pages, :dependent => :destroy
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -67,12 +68,16 @@ class User < ActiveRecord::Base
   end
   # ---------------------------------------
   
+  def has_ownership?(asset)
+    (asset.owner == self) || has_role?('admin')
+  end
+    
+    
   protected
     
-    def make_activation_code
-        self.deleted_at = nil
-        self.activation_code = self.class.make_token
-    end
-
+  def make_activation_code
+    self.deleted_at = nil
+    self.activation_code = self.class.make_token
+  end
 
 end

@@ -2,6 +2,7 @@ class Admin::PagesController < Admin::BaseController
   
   require_role 'admin'
   before_filter :find_page, :only => [:show, :edit, :update, :destroy]
+  before_filter :owner_required, :only => [:edit, :update, :destroy]
   
   def index
     @pages = Page.search(params[:search], params[:page])
@@ -17,7 +18,7 @@ class Admin::PagesController < Admin::BaseController
   
   def create
     @page = Page.new(params[:page])
-    if @page.save
+    if current_user.pages << @page
       flash[:message] = 'Page Created successfully.'
       redirect_to [:admin, @page] and return
     else
@@ -63,6 +64,10 @@ class Admin::PagesController < Admin::BaseController
   
   def redirect_to_pages_home
     redirect_to [:admin, Page.new] and return
+  end
+  
+  def owner_required
+    redirect_to_pages_home and return unless current_user.has_ownership?(@page)
   end
   
 end
