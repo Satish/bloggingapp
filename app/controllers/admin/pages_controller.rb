@@ -1,4 +1,4 @@
-class Admin::PagesController < Admin::AdminController
+class Admin::PagesController < Admin::BaseController
   
   before_filter :find_page, :only => [:show, :edit, :update, :destroy]
   

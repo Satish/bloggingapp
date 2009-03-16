@@ -1,4 +1,4 @@
-class Admin::PostsController < Admin::AdminController
+class Admin::PostsController < Admin::BaseController
   
   before_filter :find_post, :only => [:show, :edit, :update, :destroy]
   
