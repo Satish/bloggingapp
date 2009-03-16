@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :user
       t.boolean :active, :comments_allowed, :default => true
       t.string :status, :default => 'draft'
-      t.datetime :published_at
+      t.datetime :published_at, :deleted_at
 
       t.timestamps
     end

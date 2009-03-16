@@ -16,6 +16,7 @@
 class Post < ActiveRecord::Base
 
   acts_as_taggable
+  acts_as_paranoid
   
   has_permalink :title, :permalink
   attr_protected :status, :active

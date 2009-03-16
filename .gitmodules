@@ -25,3 +25,6 @@
 [submodule "jquery-lightbox"]
 	path = jquery-lightbox
 	url = git://github.com/krewenki/jquery-lightbox.git
+[submodule "vendor/plugins/acts_as_paranoid"]
+	path = vendor/plugins/acts_as_paranoid
+	url = git://github.com/technoweenie/acts_as_paranoid.git

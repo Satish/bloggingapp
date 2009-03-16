@@ -14,6 +14,8 @@
 
 class Page < ActiveRecord::Base
   
+  acts_as_paranoid
+  
   has_permalink :title, :permalink
   
   attr_protected :status#, :active

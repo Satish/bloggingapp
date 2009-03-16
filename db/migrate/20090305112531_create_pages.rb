@@ -5,6 +5,7 @@ class CreatePages < ActiveRecord::Migration
       t.text :description
       t.references :user
       t.boolean :active, :default => true
+      t.datetime :deleted_at
       
       t.timestamps
     end
