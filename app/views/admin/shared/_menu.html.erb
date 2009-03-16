@@ -3,7 +3,7 @@
 	  <h1 id="menubutton"><a href="<%= request.path -%>"><%= controller.controller_name -%></a></h1>
 			<div id="menulist" class="dropbuttonlist">
 				<ul>
-				<li id="link-dashboard" class="" title="View your user dashboard"><%= link_to 'Dashboard', admin_dashboard_index_path -%></li>				  
+				<li id="link-dashboard" class="" title="View your user dashboard"><%= link_to 'Dashboard', admin_root_path -%></li>				  
   			<li id="link-create" class="submenu first-child" title="Create content">
   			  <%= link_to 'New', new_admin_post_path, :class => "top" -%>
   				<ul class="submenu">
@@ -23,7 +23,7 @@
 		  	<li id="link-users" class="selected" title="View and manage users"><%= link_to 'Users', admin_users_path -%></li>
 				<li id="link-tags" class="" title="blog tags"><%= link_to 'Tags', admin_posts_path -%></li>
 				<li id="link-logs" class="" title="View system log messages"><%= link_to 'Logs', "#" -%></li>
-				<li id="link-logout" class="last-child" title="Log out of the administration interface"><%= link_to 'Logout<span class="hotkey enabled">X</span>', "#" -%></li>
+				<li id="link-logout" class="last-child" title="Log out of the administration interface"><%= link_to 'Logout<span class="hotkey enabled">X</span>', admin_logout_path -%></li>
 			</ul>
 		</div>
 	</div>

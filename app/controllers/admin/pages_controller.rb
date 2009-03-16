@@ -1,5 +1,6 @@
 class Admin::PagesController < Admin::BaseController
   
+  require_role 'admin'
   before_filter :find_page, :only => [:show, :edit, :update, :destroy]
   
   def index

@@ -1,4 +1,7 @@
 class Admin::UsersController < Admin::BaseController
+  
+  require_role 'admin', :except => [:index]
+  
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
@@ -70,8 +73,11 @@ class Admin::UsersController < Admin::BaseController
   # smart -- make sure you check that the visitor is authorized to do so, that they
   # supply their old password along with a new one to update it, etc.
 
-protected
+  protected ##################################
+  
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+    redirect_to_admin_root_path and return unless @user
   end
+  
 end

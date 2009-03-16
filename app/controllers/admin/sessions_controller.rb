@@ -1,7 +1,9 @@
 # This controller handles the login/logout function of the site.  
-class Admin::SessionsController < Admin::BaseController
+class Admin::SessionsController < ApplicationController
   
+  before_filter :login_required, :only => [:destroy]
   layout 'login'
+  
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
@@ -33,8 +35,8 @@ class Admin::SessionsController < Admin::BaseController
  
   def destroy
     logout_killing_session!
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default('/')
+    flash[:notice] = "You have been logged out successfully."
+    redirect_back_or_default(admin_login_path)
   end
 
   protected ##################################
@@ -68,8 +70,8 @@ class Admin::SessionsController < Admin::BaseController
     # )
     new_cookie_flag = (params[:remember_me] == "1")
     handle_remember_cookie! new_cookie_flag
-    redirect_back_or_default(root_path)
-    flash[:notice] = "Logged in successfully"
+    redirect_back_or_default(admin_root_path)
+    flash[:notice] = "You have been Logged in successfully"
   end
   
   # Track failed login attempts
