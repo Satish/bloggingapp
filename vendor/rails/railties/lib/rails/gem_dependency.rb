@@ -72,14 +72,12 @@ module Rails
     rescue Gem::LoadError
     end
 
-    def dependencies(options = {})
-      return [] if framework_gem? || specification.nil?
-
+    def dependencies
+      return [] if framework_gem?
       all_dependencies = specification.dependencies.map do |dependency|
         GemDependency.new(dependency.name, :requirement => dependency.version_requirements)
       end
-
-      all_dependencies += all_dependencies.map { |d| d.dependencies(options) }.flatten if options[:flatten]
+      all_dependencies += all_dependencies.map(&:dependencies).flatten
       all_dependencies.uniq
     end
 
@@ -150,8 +148,6 @@ module Rails
     end
 
     def unpack_to(directory)
-      return if specification.nil? || File.directory?(gem_dir(directory)) || framework_gem?
-
       FileUtils.mkdir_p directory
       Dir.chdir directory do
         Gem::GemRunner.new.run(unpack_command)

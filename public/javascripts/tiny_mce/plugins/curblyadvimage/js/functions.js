@@ -13,7 +13,7 @@ function select_thumb(element) {
 
 function upload_image_callback(url, alt_text, photo_id){
 	$('image_uploaded_data').clear();
-  new Ajax.Request("/tiny_mce_photos/?page=1", {asynchronous:true, evalScripts:true, method:'get'});
+  new Ajax.Request("/admin/tiny_mce_photos/?page=1", {asynchronous:true, evalScripts:true, method:'get'});
 }
 
 function curbly_insert_image(url, alt_text){
@@ -42,7 +42,7 @@ function ts_onload(){
 	$('image_upload_form').setAttribute("action", ts_upload_image_path());
 	}
 	function ts_upload_image_path() {
-	  return '/tiny_mce_photos/create';
+	  return '/admin/tiny_mce_photos';
 	}
 function ts_ce(tag,name){
   if (name && window.ActiveXObject){

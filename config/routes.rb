@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts
     admin.resources :comments
     admin.resources :pages
+    admin.resources :tiny_mce_photos, :only => [:index, :create]
     admin.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
     
     admin.with_options :controller => 'users' do |user|
