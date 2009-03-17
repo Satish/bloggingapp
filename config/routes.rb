@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :blogs
+
     
    map.root :controller => "posts"
    map.resources :posts
@@ -9,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
     admin.root :controller => 'dashboard'
+    admin.resource :blog, :controller => :blogs, :only => [:edit, :update]
     admin.resources :posts
     admin.resources :comments
     admin.resources :pages
