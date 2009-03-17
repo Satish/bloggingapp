@@ -6,8 +6,10 @@
 #  title       :string(255)
 #  permalink   :string(255)
 #  description :text
-#  status      :boolean(1)      default(TRUE)
-#  active      :boolean(1)
+#  user_id     :integer(4)
+#  blog_id     :integer(4)
+#  active      :boolean(1)      default(TRUE)
+#  deleted_at  :datetime
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -30,6 +32,10 @@ class Page < ActiveRecord::Base
   def self.search(search, page)
     paginate :per_page => 5, :page => page,
              :conditions => ['title like ? or description like ?', "%#{search}%", "%#{search}%"], :order => 'title'
+  end
+
+  def url
+    permalink
   end
 
 end

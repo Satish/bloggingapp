@@ -4,7 +4,7 @@ class Admin::PostsController < Admin::BaseController
   before_filter :owner_required, :only => [:edit, :update, :destroy]
   
   def index
-    @posts = Post.search(params[:search], params[:page])
+    @posts = Post.search(params[:search], :page => params[:page])
     respond_to do |format|
       format.html{}
       format.xml{ render :xml => @posts }

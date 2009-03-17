@@ -1,14 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :blogs
 
-    
    map.root :controller => "posts"
-   map.resources :posts
-   map.resources :pages
-   map.feed '/feed', :controller => "posts", :action => "feed"
-   map.connect ':year/:month/:day/:permalink', :controller => 'posts', :action => 'show', :requirements => { :year => /\d+/ }
-  
-  
+   map.resources :pages, :only => [:index]
+
+   map.with_options :controller => 'pages' do |pages|
+     pages.connect '/:permalink', :action => 'show'
+   end
+
+   map.resources :posts, :only => [:show, :index]
+   map.with_options :controller => 'posts' do |posts|
+     posts.feed '/feed', :action => "feed"
+     posts.connect ':year/:month/:day/:permalink', :action => 'show', :requirements => { :year => /\d+/ }
+   end
+
   map.namespace :admin do |admin|
     admin.root :controller => 'dashboard'
     admin.resource :blog, :controller => :blogs, :only => [:edit, :update]

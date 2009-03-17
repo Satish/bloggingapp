@@ -8,7 +8,7 @@
 #  author_email     :string(255)
 #  description      :text
 #  spam             :boolean(1)
-#  status           :boolean(1)
+#  active           :boolean(1)
 #  commentable_id   :integer(4)
 #  commentable_type :string(255)
 #  created_at       :datetime
@@ -17,7 +17,9 @@
 
 class Comment < ActiveRecord::Base
   
-  named_scope :active, :conditions => { :active => true }
+  attr_protected :active, :spam
+  
+  named_scope :active, :conditions => { :active => true, :spam => false }
   named_scope :inactive, :conditions => { :active=> false }
   
   validates_presence_of :author, :author_email, :description
@@ -26,4 +28,14 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable  
   
+  def activate!
+    self.update_attribute(:active, true)
+  end
+
+  def self.search(query, options={})
+    default_options = {:per_page => 5, :conditions => ['author like ? or description like ? or author_email like ? or author_url like ? ', "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"], :order => 'created_at DESC'}
+    
+    paginate default_options.merge(options)
+  end
+
 end

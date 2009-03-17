@@ -12,10 +12,21 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
   
-  before_filter :set_meta_atttributes
-  
+  before_filter :find_blog
+
+  def find_blog
+    @blog = Blog.first
+    unless @blog
+      render :text => "qs qs  qs  q"
+    else
+      render :text => @blog.disable_message, :layout => false unless @blog.active?
+    end
+  end
+
   def set_meta_atttributes
-    @meta_title = "#{request.url}" unless @meta_title
+#    @meta_title = @blog.meta_title unless @meta_title
+#    @meta_description = @blog.meta_description
+#    @meta_keywords = @blog.meta_keywords
   end
   
 end

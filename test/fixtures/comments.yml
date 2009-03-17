@@ -8,7 +8,7 @@
 #  author_email     :string(255)
 #  description      :text
 #  spam             :boolean(1)
-#  status           :boolean(1)
+#  active           :boolean(1)
 #  commentable_id   :integer(4)
 #  commentable_type :string(255)
 #  created_at       :datetime

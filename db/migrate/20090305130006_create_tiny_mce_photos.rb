@@ -1,16 +1,11 @@
 class CreateTinyMcePhotos < ActiveRecord::Migration
   def self.up
     create_table :tiny_mce_photos do |t|
-      t.string   "name"
-      t.text     "description"
-      t.integer  "user_id",      :limit => 11
-      t.string   "content_type"
-      t.string   "filename"
-      t.integer  "size",         :limit => 11
-      t.integer  "parent_id",    :limit => 11
-      t.string   "thumbnail"
-      t.integer  "width",        :limit => 11
-      t.integer  "height",       :limit => 11
+      t.string        :name, :content_type, :filename, :thumbnail
+      t.text          :description
+      t.references     :user, :parent
+      t.integer        :size, :width, :height
+
       t.timestamps
     end
   end

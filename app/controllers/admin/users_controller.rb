@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::BaseController
   before_filter :find_user, :only => [:edit, :update, :suspend, :unsuspend, :destroy, :purge]
   
   def index
-    @users = User.search(params[:search], params[:page])
+    @users = User.search(params[:search], :page => params[:page])
   end
   
   # render new.rhtml

@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  login                     :string(40)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  remember_token            :string(40)
+#  activation_code           :string(40)
+#  name                      :string(100)     default("")
+#  email                     :string(100)
+#  activated_at              :datetime
+#  remember_token_expires_at :datetime
+#  deleted_at                :datetime
+#  state                     :string(255)     default("passive")
+#  blog_id                   :integer(4)
+#  created_at                :datetime
+#  updated_at                :datetime
+#
+
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
@@ -54,11 +75,11 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
   
-  def self.search(search, page)
-    paginate :per_page => 5, :page => page,
-             :conditions => ['name like ? or email like ?', "%#{search}%", "%#{search}%"], :order => 'name'
+  def self.search(query, options)
+    default_options = {:per_page => 5, :conditions => ['name like ? or email like ?', "%#{query}%", "%#{query}%"], :order => 'name'}
+    
+    paginate default_options.merge(options)
   end
-  
   
    # ---------------------------------------
   # has_role? simply needs to return true or false whether a user has a role or not.  
