@@ -28,14 +28,26 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable  
   
-  def activate!
+  def approve!
     self.update_attribute(:active, true)
   end
-
+  
+  def unapprove!
+    self.update_attribute(:active, false)
+  end
+  
   def self.search(query, options={})
-    default_options = {:per_page => 5, :conditions => ['author like ? or description like ? or author_email like ? or author_url like ? ', "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"], :order => 'created_at DESC'}
+    default_options = {:per_page => 5, :conditions => ["author like ? or description like ? or author_email like ? or author_url like ? ", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%"], :order => 'created_at DESC'}
     
     paginate default_options.merge(options)
   end
-
+  
+  def status
+    active ? "Approved" : "Unapproved"
+  end
+  
+  def approved?
+    active
+  end
+  
 end

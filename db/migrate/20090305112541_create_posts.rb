@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
-      t.string :title, :permalink
+      t.string :title, :permalink, :cached_tag_list
       t.text :description
       t.references :user
       t.boolean :active, :comments_allowed, :default => true

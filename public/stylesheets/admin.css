@@ -51,7 +51,7 @@ a img {
 
 /*- THE MENUBAR */
 
-#menubar {
+#header {
 	background: #1a1a1a;
 	position: fixed;
 	width: 100%;
@@ -62,10 +62,12 @@ a img {
 	opacity: 1; /* was .98 - see issue #588 */
 }
 
-#menubar a {
+#header a {
 	color: #fff;
 	outline: none;
 }
+
+#footer { background-color: #464646; height: 30px; }
 
 #site {
 	position: absolute;
@@ -82,7 +84,7 @@ a img {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 180px;
+	width: 140px;
 	padding: 5px 0 0;
 	margin-left: 5px;
 	height: 27px;
@@ -120,7 +122,7 @@ a img {
 	line-height: 22px;
 	display: block;
 	padding: 0 30px 0 10px;
-	background: url(/images/admin/arrowdown.png) 160px center no-repeat;
+	background: url(/images/admin/arrowdown.png) 115px center no-repeat;
 }
 
 #menubutton a:first-letter {
@@ -192,7 +194,7 @@ a img {
 }
 
 #menulist li.submenu a.top {
-	background: url('/images/admin/arrowright.png') 163px center no-repeat;
+	background: url('/images/admin/arrowright.png') 115px center no-repeat;
 }
 
 #menulist li.submenu li:first-child, #menulist li.submenu li:first-child a {
@@ -229,7 +231,9 @@ a img {
 }
 
 #page {
-	margin-top: 50px;
+	margin: 50px auto;
+  width: 960px;
+  min-height:450px;
 }
 
 body.login #page .container {
@@ -275,7 +279,7 @@ body.login .create input.text, body.login .create label {
 /*	width: 70%;
 	min-width: 750px;
 	max-width: 900px;*/
-	width: 815px;
+	width: 100%;
 	margin: 10px auto;
 	padding: 15px 30px;
 	background: #fafafa;
@@ -284,6 +288,7 @@ body.login .create input.text, body.login .create label {
 	-webkit-box-shadow: 0px 1px 15px #ddd;
 	border: 1px solid #e7e7e7;
   overflow:hidden;
+  width:100%;
 }
 
 #page .container h1, #page .container h2, #page .container h3 {
@@ -441,7 +446,7 @@ body.page-logs .item.expanded .more {
 
 .search { font-size:1.5em; }
 
-.search .text { width: 60%; padding:5px; }
+.search .text { width: 400px; padding:5px; }
   
 .create input.text, .create textarea, .create select{
   padding:3px 5px;
@@ -466,12 +471,12 @@ label.overcontent {
   padding-bottom: 1px;
 }
 
-.floatRight {float:right }
+.floatRight {float:right; }
 .marginTop4 { margin-top: 4px; }
-.floatLeft {float:left; }
+.floatLeft { float:left; }
 
 /* TABLE VIEW STYLE START */
-.table { background-color:#FAFAFA; border:1px solid #E7E7E7; -moz-border-radius-bottomleft:5px; -moz-border-radius-bottomright:5px; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; width:100%; overflow:hidden; }  
+.table { background-color: #FAFAFA; border:1px solid #E7E7E7; -moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright:5px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; width: 100%; overflow: hidden; }  
 .table .tableHeader { background-color:#E7E7E7; color:#333; font-size:12px; font-weight:bold; height:20px; padding:5px; text-align:center; }
 .table .tableRow { overflow:hidden; padding: 5px 0px; }
 .table .tableRow:hover { background-color:#F0F0F0 }

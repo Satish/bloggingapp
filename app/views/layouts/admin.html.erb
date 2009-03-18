@@ -12,10 +12,11 @@
     <%= stylesheet_link_tag "sexy_flash" %>
   </head>
   <body>
-    <%= render :partial => 'admin/shared/menu' -%>
+    <%= render :partial => 'admin/shared/header' -%>
     <div id="page">
       <%= sexy_flash :timeout => 3, :duration => 0.1 -%>
       <%= yield -%>
     </div>
+    <%= render :partial => 'admin/shared/footer' -%>
   </body>
 </html>

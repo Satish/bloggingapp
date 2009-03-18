@@ -1,6 +1,5 @@
-<div id="menubar">
   <div id="menu" class="dropbutton">
-	  <h1 id="menubutton"><a href="<%= request.path -%>"><%= controller.controller_name -%></a></h1>
+	  <h1 id="menubutton"><%= link_to controller.controller_name , "/admin/#{controller.controller_name}" -%></h1>
 			<div id="menulist" class="dropbuttonlist">
 				<ul>
 				<li id="link-dashboard" class="" title="View your user dashboard"><%= link_to 'Dashboard', admin_root_path -%></li>				  
@@ -27,5 +26,3 @@
 			</ul>
 		</div>
 	</div>
-	<a href="/admin" id="site" title="Go to Site">My Blog</a>
-</div>

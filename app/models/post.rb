@@ -33,7 +33,6 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title, :permalink
   
   has_many :comments,  :as => :commentable, :dependent => :destroy
-  has_many :tags
   
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
 
@@ -67,8 +66,14 @@ class Post < ActiveRecord::Base
     paginate default_options.merge(options)
   end
   
-  def tag_list
-    
+  def new_or_existing_tags
+    tags.collect(&:name).join(",")
+  end
+  
+  def new_or_existing_tags=(noe_tags)
+    noe_tags.split(',').each do |tag_name|
+      tags.build(:name => tag_name)
+    end
   end
   
   def url

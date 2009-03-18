@@ -15,19 +15,15 @@
    	</div>
     <div class="formRow transparent">
    		<%= f.label :tags -%>
-   		<%#= f.text_field :tags, :class => "text important styledFormElement" -%>
+   		<%= text_field :post, :tag_list, :class => "text important styledFormElement" -%>
    	</div>
     <div class="formRow transparent">
    		<%= f.label :comments_allowed -%>
    		<%= f.check_box :comments_allowed, :class => "text important styledFormElement" -%>
    	</div>
     <div class="formRow transparent">
-   		<%= f.label :status -%>
-   		<%= f.select :status, ['Draft', 'Publish'], :class => "important styledFormElement" -%>
-   	</div>
-    <div class="formRow transparent">
-      <%= f.submit "Publish", :class => "button publish" -%>&nbsp;&nbsp;
-      <%= f.submit "Save", :class => "button", :tabindex=>"4" -%>&nbsp; or &nbsp;
+      <%= f.submit "Publish", :class => "button publish" -%>
+      <%= f.submit "Save", :class => "button", :tabindex=>"4", :style => "margin-left: 5px;" if @post.new_record? -%>&nbsp; or &nbsp;
       <%= link_to "Cancel", [:admin, Post.new] -%>
     </div>
   <% end -%>

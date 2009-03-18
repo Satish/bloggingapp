@@ -7,13 +7,13 @@
   <% if @comments.size > 0 -%>
     <div class="table">
       <div class = "tableHeader">
-        <span class = "pct10">Sr. NO.</span>
+        <span class = "pct5">Sr. No.</span>
+        <span class = "pct5">Id</span>
         <span class = "pct40 textAlignLeft">Description</span>
-        <span class = "pct10">Author</span>
-        <span class = "pct15">Author Email</span>
-        <span class = "pct10">Created At</span>
+        <span class = "pct20">Author</span>
+        <span class = "pct10">Date</span>
         <span class = "pct5">Status</span>
-        <span class = "pct10">-</span>
+        <span class = "pct15">-</span>
       </div>
       <%= render :partial => 'comments' -%>
     </div>

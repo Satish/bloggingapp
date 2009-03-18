@@ -94,7 +94,10 @@ class User < ActiveRecord::Base
   def has_ownership?(asset)
     (asset.owner == self) || has_role?('admin')
   end
-    
+  
+  def display_name
+    name.blank? ? login : name
+  end
     
   protected
     

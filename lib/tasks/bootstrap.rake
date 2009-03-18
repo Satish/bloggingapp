@@ -41,7 +41,7 @@ namespace :db do
     user.posts << post
     post.publish!
     comment = post.comments.create(:author => user.login, :description => "This is the test comment", :author_email => user.email)
-    comment.activate!
+    comment.approve!
   end
   
 end 
