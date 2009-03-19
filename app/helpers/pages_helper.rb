@@ -4,5 +4,5 @@ module PagesHelper
     suffix = options[:anchor] ? "##{options[:anchor]}" : ""
     path = page.url + suffix
   end
-
+  
 end

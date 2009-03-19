@@ -3,11 +3,11 @@ ActionController::Routing::Routes.draw do |map|
    map.root :controller => "posts"
    map.resources :pages, :only => [:index]
 
+   map.resources :posts, :only => [:show, :index]
    map.with_options :controller => 'pages' do |pages|
      pages.connect '/:permalink', :action => 'show'
    end
 
-   map.resources :posts, :only => [:show, :index]
    map.with_options :controller => 'posts' do |posts|
      posts.feed '/feed', :action => "feed"
      posts.connect ':year/:month/:day/:permalink', :action => 'show', :requirements => { :year => /\d+/ }

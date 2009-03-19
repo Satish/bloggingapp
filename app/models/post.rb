@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   
   named_scope :active, :conditions => { :active => true }
   named_scope :inactive, :conditions => { :active=> false }
-  named_scope :published, :conditions => ['published_at IS NOT ? and published_at > ?', nil, Time.now.utc]
+  named_scope :published, :conditions => ['published_at IS NOT ? and published_at < ?', nil, Time.now.utc]
   
   validates_presence_of :title, :permalink, :description, :user_id
   validates_uniqueness_of :title, :permalink

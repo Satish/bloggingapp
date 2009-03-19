@@ -9,11 +9,15 @@
     <meta name="keywords" content= '<%= @meta_keywords -%>' />
     <%#= stylesheet_link_tag 'main' %>
     <%= javascript_include_tag :defaults %>
-    <%= stylesheet_link_tag "sexy_flash" %>
+    <%= stylesheet_link_tag "sexy_flash", 'main' %>
     <%= auto_discovery_link_tag(:rss, :action => 'feed') %>
   </head>
   <body>
-    <%= sexy_flash :timeout => 3, :duration => 0.1 -%>
-    <%= yield -%>
+    <div id="container">
+      <div id = "header"><%= render :partial => "shared/header" -%></div>
+      <%= sexy_flash :timeout => 3, :duration => 0.1 -%>
+      <div id = "page"><%= yield -%></div>
+      <div id = "footer"><%= render :partial => "shared/footer" -%></div>
+    </div>
   </body>
 </html>

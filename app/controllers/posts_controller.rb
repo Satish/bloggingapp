@@ -2,16 +2,16 @@ class PostsController < ApplicationController
 
   layout "application", :except => [:feed]
   before_filter :find_post, :only => [:show]
-  after_filter :set_meta_atttributes
+#  after_filter :set_meta_atttributes
   
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
-
+    options = {:page => params[:page] || 1, :per_page => 2}
+    @posts = (params[:tag].blank? ? Post.published.search(params[:search], options) : Post.published.paginate_tagged_with(params[:tag], options))
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
+      format.html{}
+      format.xml{ render :xml => @posts }
     end
   end
 

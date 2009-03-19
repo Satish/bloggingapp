@@ -486,3 +486,21 @@ label.overcontent {
 .table .tableRow.even{ border-bottom:1px solid #E7E7E7; }
 .table .tableRow .textAlignLeft, .table .tableHeader .textAlignLeft { text-align:left; }
 /* TABLE VIEW STYLE END */
+
+/* ERRRO MESSAGE STYLE START */
+.fieldWithErrors input, .fieldWithErrors textarea{ padding: 2px; border: 3px solid red; }
+#errorExplanation { color:#000; width:500px; margin:20px 0px; overflow:hidden; line-height:20px; border: 1px solid #bbb; }
+#errorExplanation h2 { color: #fff; padding: 5px; font-size: 14px; font-weight: normal; background-color: #CC0000; border-bottom:1px solid #bbb; font-weight: bold; }
+#errorExplanation p { padding: 5px; font-size: 14px; margin-top: 10px; }
+#errorExplanation ul li { width: 100%; 	font-size: 12px; list-style: square; margin: 2px 10px 2px 30px; background: none !important;  padding-left: 0; }
+/* ERRRO MESSAGE STYLE END */
+
+/* PAGINATION STYLE START */
+.pagination { overflow: hidden; margin: 15px 0; color: #ccc; }
+.pagination .static { font-weight: bold; color: #333; padding: 2px 5px 0 0; }
+.pagination { padding: 3px; margin: 3px;}
+.pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #4082BC;  text-decoration: none; color: #3399CC; font-weight:bold; }
+.pagination a:hover, .pagination a:active { border: 1px solid #4082BC ; color: #3399CC; }
+.pagination span.current { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #4082BC; font-weight: bold; background-color: #3399CC; color: #FFF; }
+.pagination span.disabled { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #eee; color: #ddd;}
+/* PAGINATION STYLE END */

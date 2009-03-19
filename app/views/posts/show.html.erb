@@ -1,32 +1,9 @@
-<p>
-  <b>Title:</b>
-  <%=h @post.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @post.description %>
-</p>
-
-<p>
-  <b>Permalink:</b>
-  <%=h @post.permalink %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%=h @post.status %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%=h @post.active %>
-</p>
-
-<p>
-  <b>Published at:</b>
-  <%=h @post.published_at %>
-</p>
-
-
-<%= link_to 'Back', posts_path %>
+<% div_for @post do %>
+  <h1 class = "postTitle"><%=link_to h(@post.title), @post %></h2>
+  <div class = "postDescription"><%= truncate(@post.description, :lenght => 300) -%></div>
+  <div class = "postTags">Tags: <%= render_tags1(@post) -%></div>
+  <div class = "postDate">Date: <%= h @post.created_at -%></div>
+<% end %>
+<div>
+  <h2>Comments</h2>
+</div>
